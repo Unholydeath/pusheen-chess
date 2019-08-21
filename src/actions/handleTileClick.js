@@ -8,13 +8,26 @@ import { movePiece, setActiveTile } from './helpers';
  * @return {Object}
  */
 const handleTileClick = (state, tileId) => {
-  if (state.activeTile !== null && !state.legalMoves.includes(tileId)) {
-    return { activeTile: null, legalMoves: [] };
-  } else if (state.activeTile !== null) {
+  if (state.activeTile !== null) {
+    let piece = getFromBoard(state);
+    let color = piece.team === 0 ? 'white' : 'black';
+    if(!state.legalMoves.includes(tileId) || state.turn !== color) {
+      return { activeTile: null, legalMoves: [] };
+    }
+    state.turn = (state.turn === 'white' ? 'black' : 'white');
     return movePiece(state, { from: state.activeTile, to: tileId });
   }
 
   return setActiveTile(state, tileId);
 };
+
+const getFromBoard = state => {
+  let activeID = state.activeTile;
+  let row = activeID[0];
+  let column = activeID[1];
+  let rowObj = state.board[row];
+  let tile = rowObj[column];
+  return tile;
+}
 
 export default handleTileClick;
