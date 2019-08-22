@@ -1,4 +1,4 @@
-import { movePiece, setActiveTile } from './helpers';
+import { movePiece, setActiveTile, tileData } from './helpers';
 
 /**
  * Either sets a tile to active or moves the active piece to this tile.
@@ -13,7 +13,6 @@ const handleTileClick = (state, tileId) => {
   } else if (state.activeTile !== null) {
     return movePiece(state, { from: state.activeTile, to: tileId });
   }
-
   return setActiveTile(state, tileId);
 };
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'redux-zero/react';
 import actions from '../../actions';
 import { Pawn, Rook, Knight, Bishop, Queen, King } from '../pieces';
+import { tileData } from '../../actions/helpers';
 
 class BoardTile extends Component {
   render() {
