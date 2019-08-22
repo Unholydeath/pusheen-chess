@@ -1,4 +1,3 @@
-import { movePiece, setActiveTile, tileData } from './helpers';
 import { movePiece, setActiveTile } from './helpers';
 import isKingInCheck from './helpers/isKingInCheck';
 import getKingTile from './helpers/getKingTile';
