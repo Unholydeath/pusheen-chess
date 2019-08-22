@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import { movePiece, setActiveTile, tileData } from './helpers';
-=======
 import { movePiece, setActiveTile } from './helpers';
 import isKingInCheck from './helpers/isKingInCheck';
 import getKingTile from './helpers/getKingTile';
->>>>>>> master
 
 /**
  * Either sets a tile to active or moves the active piece to this tile.
