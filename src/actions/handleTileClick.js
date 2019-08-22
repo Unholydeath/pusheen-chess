@@ -1,4 +1,6 @@
 import { movePiece, setActiveTile } from './helpers';
+import isKingInCheck from './helpers/isKingInCheck';
+import getKingTile from './helpers/getKingTile';
 
 /**
  * Either sets a tile to active or moves the active piece to this tile.
@@ -15,7 +17,17 @@ const handleTileClick = (state, tileId) => {
       return { activeTile: null, legalMoves: [] };
     }
     state.turn = (state.turn === 'white' ? 'black' : 'white');
-    return movePiece(state, { from: state.activeTile, to: tileId });
+    var result = movePiece(state, { from: state.activeTile, to: tileId });
+    const [newRow, newCol] = tileId.split('');
+    var enemyKingColor;
+    result.board[newRow][newCol].team === 0 ? enemyKingColor = 1 : enemyKingColor = 0;
+    var kingTile = getKingTile(result, enemyKingColor)
+
+    if(isKingInCheck(result, kingTile)){
+      console.log("CHECK!!!!");
+    }
+
+    return result;
   }
 
   return setActiveTile(state, tileId);
