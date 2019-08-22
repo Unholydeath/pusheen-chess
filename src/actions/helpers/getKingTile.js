@@ -8,10 +8,13 @@ const getKingTile = (state, teamColor) => {
 
         for(var col = 0; col < 8; col++) {
 
-            const { piece, team } = state.board[String.fromCharCode(row)][col];
-            if(team === teamColor && piece === 'king'){
-                return `${String.fromCharCode(row)}${col}`;
-            }
+            if(state.board[String.fromCharCode(row)][col] != null){
+
+                const { piece, team } = state.board[String.fromCharCode(row)][col];
+                if(team === teamColor && piece === 'king'){
+                    return `${String.fromCharCode(row)}${col}`;
+                }
+            }            
         }
     }
 
