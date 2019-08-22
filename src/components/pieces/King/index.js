@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 class King extends Component {
+
   render() {
     const { team } = this.props;
 
