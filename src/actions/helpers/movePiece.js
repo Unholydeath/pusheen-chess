@@ -16,7 +16,7 @@ const movePiece = (state, { from, to }) => {
   newBoard[toRow][toCol] = state.board[fromRow][fromCol];
 
   if(tileData(state, from).piece === 'pawn') {
-    if(to[0] === 'a') {
+    if(to[0] === 'a' || to[0] === 'h') {
       newBoard[toRow][toCol].piece = 'queen';
     }
   }
